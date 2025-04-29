@@ -9,34 +9,33 @@ import { fetchContent, parseContentIntoSentences } from './lib/content';
 
 function App() {
   const [ sentences, setSentences ] = useState<Array<string>>([]);
-  const { currentWord, currentSentence, controls } = useSpeech(sentences);
-  const [ curSentenceIndex, setCurSentenceIndex ] = useState(0);
-  const [ curWordRangeStart, setCurWordRangeStart ] = useState(0);
-  const [ curWordRangeEnd, setCurWordRangeEnd ] = useState(0);
+  const { 
+    currentSentenceIdx,
+    currentWordRange,
+    playbackState,
+    play,
+    pause
+  } = useSpeech(sentences);
 
   useEffect(() => {
     (async () => {
       const data = await fetchContent();
       const parsed = parseContentIntoSentences(data);
       setSentences(parsed);
-
-      debugger
     })();
   }, [])
 
-
-
-
+  // debugger
   // const SpeechEngine = createSpeechEngine();
 
   return (
     <div className="App">
       <h1>Text to speech</h1>
       <div>
-        <CurrentlyReading currentSentenceIdx={curSentenceIndex} currentWordRange={[curWordRangeStart, curWordRangeEnd]} sentences={sentences}/>
+        <CurrentlyReading currentSentenceIdx={currentSentenceIdx} currentWordRange={[currentWordRange[0], currentWordRange[1]]} sentences={sentences}/>
       </div>
       <div>
-        {/* <Controls play={} pause={} loadNewContent={}/> */}
+        <Controls play={play} pause={pause} loadNewContent={() => window.location.reload()} state={playbackState}/>
       </div>
     </div>
   );

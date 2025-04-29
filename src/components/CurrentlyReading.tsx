@@ -16,5 +16,10 @@ export const CurrentlyReading = ({
   currentSentenceIdx: number;
   sentences: string[];
 }) => {
-  return <div data-testid="currently-reading"></div>;
+  return <div data-testid="currently-reading">
+    <br/>
+    <h3>{sentences[currentSentenceIdx]}</h3>
+    <br/>
+    <p>{sentences.join(' ')}</p>
+  </div>;
 };
