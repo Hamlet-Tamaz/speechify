@@ -23,20 +23,23 @@ const useSpeech = (sentences: Array<string>) => {
     load: _load
   } = createSpeechEngine({
     onBoundary: function (e: SpeechSynthesisEvent): void {
-      throw new Error('Function not implemented.');
+      // throw new Error('Function not implemented.');
     },
     onEnd: function (e: SpeechSynthesisEvent): void {
-      throw new Error('Function not implemented.');
+      // throw new Error('Function not implemented.');
     },
     onStateUpdate: function (state: PlayingState): void {
-      throw new Error('Function not implemented.');
+      // throw new Error('Function not implemented.');
     }
   });
 
-  _load(sentences.join('. '))
-
   const play = () => {
-    _play();
+    debugger
+    sentences.forEach((el, i) => {
+      _load(el)
+      setCurrentSentenceIdx(i);
+      _play();
+    })
 
     setPlaybackState('playing');
   };

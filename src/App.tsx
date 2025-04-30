@@ -8,7 +8,7 @@ import { fetchContent, parseContentIntoSentences } from './lib/content';
 
 function App() {
   const [ sentences, setSentences ] = useState<Array<string>>([]);
-  const { 
+  let { 
     currentSentenceIdx,
     currentWordRange,
     playbackState,
