@@ -7,6 +7,7 @@ import { PlayingState } from '../lib/speech';
  * - A button with text "Pause" if the player is playing
  * - A button with text "Load new content" that loads new content from the API
  */
+
 export const Controls = ({
   play,
   pause,
@@ -20,6 +21,6 @@ export const Controls = ({
   return <div>
     <button onClick={play}>Play</button>
     <button onClick={pause}>Pause</button>
-    <button onClick={loadNewContent}>Refresh</button>
+    <button onClick={loadNewContent}>Load new content</button>
   </div>;
 };

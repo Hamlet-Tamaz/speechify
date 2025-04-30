@@ -1,5 +1,8 @@
-.currently-reading { 
+body {
+    margin: 20px;
+}
 
+.currently-reading { 
 }
 
 .currently-reading .currently-reading-text { 
@@ -8,5 +11,16 @@
 
 .currently-reading .currently-reading-text .currentword { 
     font-size: 24px;
+    color: red;
+}
+
+button {
+    margin-right: 5px;
+    padding: 6px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.red {
     color: red;
 }

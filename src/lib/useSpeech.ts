@@ -24,10 +24,20 @@ const useSpeech = (sentences: Array<string>) => {
     load: _load
   } = createSpeechEngine({
     onBoundary: function (e: SpeechSynthesisEvent): void {
+      if (e.name === "word") {
+        const start = e.charIndex;
+        const length = e.charLength ?? 1;
+        const word = sentences[currentSentenceIdx].slice(start, start + length);
+        setCurrentWordRange([start, start + length])
+      }
     },
     onEnd: function (e: SpeechSynthesisEvent): void {
       sentenceId++;
       if (sentences[sentenceId]) play();
+      else {
+        setCurrentSentenceIdx(0);
+        setCurrentWordRange([0,0]);
+      }
     },
     onStateUpdate: function (state: PlayingState): void {
     }

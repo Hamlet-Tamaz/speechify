@@ -17,15 +17,24 @@ export const CurrentlyReading = ({
   sentences: string[];
 }) => {
   const curSentence = sentences[currentSentenceIdx];
+  const preSent = curSentence?.slice(0, currentWordRange[0]);
   const curWord = curSentence?.slice(currentWordRange[0], currentWordRange[1]);
+  const postSent = curSentence?.slice(currentWordRange[1]);
 
-  return <div data-testid="currently-reading">
-    <br/>
-    <p data-testid="current-sentence">
-      {curSentence}
-      <span data-testid="current-word">{curWord}</span>
-    </p>
-    <br/>
-    <p>{sentences.join(' ')}</p>
-  </div>;
+  return (
+    <div data-testid="currently-reading">
+      <p data-testid="current-sentence">
+        <span data-testid="current-word" className='red'>{curWord}</span>
+        <br/>
+
+        {preSent}
+        <span className='red'>{curWord}</span>
+        {postSent}
+      </p>
+
+      <br/>
+
+      <p>{sentences.join(' ')}</p>
+    </div>
+  );
 };

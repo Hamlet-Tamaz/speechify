@@ -8,7 +8,7 @@ import { fetchContent, parseContentIntoSentences } from './lib/content';
 
 function App() {
   const [ sentences, setSentences ] = useState<Array<string>>([]);
-  let { 
+  let {
     currentSentenceIdx,
     currentWordRange,
     playbackState,
@@ -27,11 +27,15 @@ function App() {
   return (
     <div className="App">
       <h1>Text to speech</h1>
-      <div>
-        <CurrentlyReading currentSentenceIdx={currentSentenceIdx} currentWordRange={[currentWordRange[0], currentWordRange[1]]} sentences={sentences}/>
-      </div>
+      <br/>
       <div>
         <Controls play={play} pause={pause} loadNewContent={() => window.location.reload()} state={playbackState}/>
+      </div>
+
+      <br/>
+
+      <div>
+        <CurrentlyReading currentSentenceIdx={currentSentenceIdx} currentWordRange={[currentWordRange[0], currentWordRange[1]]} sentences={sentences}/>
       </div>
     </div>
   );
