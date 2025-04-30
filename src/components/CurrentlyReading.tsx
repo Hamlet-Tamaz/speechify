@@ -20,6 +20,7 @@ export const CurrentlyReading = ({
   const preSent = curSentence?.slice(0, currentWordRange[0]);
   const curWord = curSentence?.slice(currentWordRange[0], currentWordRange[1]);
   const postSent = curSentence?.slice(currentWordRange[1]);
+  const joinedSentences = (sentences.join('. ') + '.').replaceAll('..', '.');
 
   return (
     <div data-testid="currently-reading">
@@ -34,7 +35,7 @@ export const CurrentlyReading = ({
 
       <br/>
 
-      <p>{sentences.join(' ')}</p>
+      <p>{joinedSentences}</p>
     </div>
   );
 };
