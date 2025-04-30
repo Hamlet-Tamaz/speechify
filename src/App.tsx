@@ -4,7 +4,6 @@ import { Controls } from './components/Controls';
 import { CurrentlyReading } from './components/CurrentlyReading';
 import { useEffect, useState} from 'react';
 import { useSpeech } from './lib/useSpeech';
-import { createSpeechEngine, SpeechEngine } from './lib/speech';
 import { fetchContent, parseContentIntoSentences } from './lib/content';
 
 function App() {
@@ -24,9 +23,6 @@ function App() {
       setSentences(parsed);
     })();
   }, [])
-
-  // debugger
-  // const SpeechEngine = createSpeechEngine();
 
   return (
     <div className="App">

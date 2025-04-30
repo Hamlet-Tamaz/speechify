@@ -27,21 +27,16 @@ const fetchContent = async (url = API_URL): Promise<string> => {
  */
 const parseContentIntoSentences = (content: string) => {
     let parsed = content
-        .replace('</s></speak>', '::')
         .replace('<speak><s>', '::')
+        .replace('</s></speak>', '::')
         .replace('<speak><p>', '::')
         .replace('</speak>', '::')
         .replace('</s><s>', '::')
-        .replace('</s>', '::')
         .replace('<s>', '::')
+        .replace('</s>', '::')
         .split('::')
         .filter(el => el);
 
-    // if (!parsed[0]) parsed.shift();
-    // if (!parsed.at(-1)) parsed.pop();
-
-    // console.log(2, {parsed});
-// debugger
     return parsed;
 };
 

@@ -16,9 +16,15 @@ export const CurrentlyReading = ({
   currentSentenceIdx: number;
   sentences: string[];
 }) => {
+  const curSentence = sentences[currentSentenceIdx];
+  const curWord = curSentence?.slice(currentWordRange[0], currentWordRange[1]);
+
   return <div data-testid="currently-reading">
     <br/>
-    <h3>{sentences[currentSentenceIdx]}</h3>
+    <p data-testid="current-sentence">
+      {curSentence}
+      <span data-testid="current-word">{curWord}</span>
+    </p>
     <br/>
     <p>{sentences.join(' ')}</p>
   </div>;
