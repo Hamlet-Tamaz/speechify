@@ -16,37 +16,36 @@ const useSpeech = (sentences: Array<string>) => {
 
   const [playbackState, setPlaybackState] = useState<PlayingState>("paused");
 
-  const {state,
+  const {
+    state,
     play: _play,
     pause: _pause,
     cancel: _cancel,
     load: _load
   } = createSpeechEngine({
     onBoundary: function (e: SpeechSynthesisEvent): void {
-      // throw new Error('Function not implemented.');
     },
     onEnd: function (e: SpeechSynthesisEvent): void {
-      // throw new Error('Function not implemented.');
+      sentenceId++;
+      if (sentences[sentenceId]) play();
     },
     onStateUpdate: function (state: PlayingState): void {
-      // throw new Error('Function not implemented.');
     }
   });
 
-  const play = () => {
-    debugger
-    sentences.forEach((el, i) => {
-      _load(el)
-      setCurrentSentenceIdx(i);
-      _play();
-    })
+  let sentenceId = 0;
+  const play = async () => {
+    const el = sentences[sentenceId];
+    setCurrentSentenceIdx(sentenceId);
 
-    setPlaybackState('playing');
+    _load(el)
+    _play();
   };
 
   const pause = () => {
     _pause();
-    setPlaybackState('paused');
+    // setCurrentSentenceIdx();
+    // setPlaybackState('paused');
   };
 
   return {
