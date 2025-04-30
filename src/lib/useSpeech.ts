@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { PlayingState } from './speech';
+import { createSpeechEngine, PlayingState, SpeechEngineOptions } from './speech';
 
 /*
   @description
@@ -16,8 +16,35 @@ const useSpeech = (sentences: Array<string>) => {
 
   const [playbackState, setPlaybackState] = useState<PlayingState>("paused");
 
-  const play = () => {};
-  const pause = () => {};
+  const {state,
+    play: _play,
+    pause: _pause,
+    cancel: _cancel,
+    load: _load
+  } = createSpeechEngine({
+    onBoundary: function (e: SpeechSynthesisEvent): void {
+      throw new Error('Function not implemented.');
+    },
+    onEnd: function (e: SpeechSynthesisEvent): void {
+      throw new Error('Function not implemented.');
+    },
+    onStateUpdate: function (state: PlayingState): void {
+      throw new Error('Function not implemented.');
+    }
+  });
+
+  _load(sentences.join('. '))
+
+  const play = () => {
+    _play();
+
+    setPlaybackState('playing');
+  };
+
+  const pause = () => {
+    _pause();
+    setPlaybackState('paused');
+  };
 
   return {
     currentSentenceIdx,
