@@ -67,6 +67,8 @@ Your parser implementation should have the same output as below:
 
 ![Example](example.gif)
 
+
+![My Version](ezgif.com-video-to-gif-converter.gif)
 ---
 
 ## Development Guidelines
