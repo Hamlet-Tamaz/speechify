@@ -1,5 +1,7 @@
 # Speechify Web Functional Test
 
+![My Version](speechify_reader.gif)
+
 ## Project Overview
 
 Create a TTS web app with indications for the current reading sentence, as well as the ability to highlight the currently playing word.
@@ -67,7 +69,7 @@ Your parser implementation should have the same output as below:
 
 ![Example](example.gif)
 
-
+#### My Version
 ![My Version](speechify_reader.gif)
 ---
 
