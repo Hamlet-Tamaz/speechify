@@ -15,7 +15,9 @@ const fetchContent = async (url = API_URL): Promise<string> => {
 
     const {content} = await response.json();
 
-    console.log('fetched content: ', {response, content})
+    const isContentValid = content.slice(0, 7) === '<speak>';
+
+    if (!isContentValid) throw new Error('SSML is invalid')
 
     return content
 };
